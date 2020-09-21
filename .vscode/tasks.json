@@ -10,7 +10,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "Build/${fileBasenameNoExtension}"
+                "Build/Sandbox"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
