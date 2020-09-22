@@ -11,6 +11,9 @@ GLFWwindow* window;
 
 // Include GLM
 #include <glm/glm.hpp>
+
+#include "../src/shaders/shader.hpp"
+
 using namespace glm;
 
 int main( void )
@@ -52,13 +55,48 @@ int main( void )
 
 	// Black background
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	glDisable(GL_CULL_FACE);
+	
+	GLuint vertexArrayID;
+	glGenVertexArrays(1, &vertexArrayID);
+	glBindVertexArray(vertexArrayID);
+
+	// Create and compile our GLSL program from the shaders
+	GLuint programID = LoadShaders( "src/setup/SimpleVertexShader.vertexshader", "src/setup/SimpleFragmentShader.fragmentshader" );
+
+	static const GLfloat vertexBufferData[] = {
+		-1.0f, -1.0f, -1.0f,
+		1.0f, -1.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,
+	};
+
+	GLuint vertexbuffer;
+	glGenBuffers(1, &vertexbuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexBufferData), vertexBufferData, GL_STATIC_DRAW);
 
 	do{
 		// Clear the screen.
 		glClear( GL_COLOR_BUFFER_BIT );
 
-		// Draw nothing
+		// Use our shader
+		glUseProgram(programID);
+
+		// Draw
+		// 1st attribute buffer : vertices
+		glEnableVertexAttribArray(0);
+		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+		glVertexAttribPointer(
+			0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
+   			3,                  // size
+   			GL_FLOAT,           // type
+   			GL_FALSE,           // normalized?
+   			0,                  // stride
+   			(void*)0            // array buffer offset
+			);
+
+		// Draw the triangle !
+		glDrawArrays(GL_TRIANGLES, 0, 3); // Starting from vertex 0; 3 vertices total -> 1 triangle
+		glDisableVertexAttribArray(0);
 		
 		
 		// Swap buffers
