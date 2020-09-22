@@ -11,10 +11,14 @@
 				
                 // Include .cpp files here (These are for .h file code)
 				"${workspaceRoot}/src/shaders/shader.cpp",
+				"${workspaceRoot}/src/textures/texture.cpp",
 				
 				// Include shaders
-				"${workspaceRoot}/src/setup/SimpleVertexShader.vertexshader",
-				"${workspaceRoot}/src/setup/SimpleFragmentShader.fragmentshader",
+				"${workspaceRoot}/src/setup/TransformVertexShader.vertexshader",
+				"${workspaceRoot}/src/setup/TextureFragmentShader.fragmentshader",
+
+				//Include textures
+				"${workspaceRoot}/src/setup/uvtemplate.DDS",
                     
 				"-I./include",
 				"-L./lib",
