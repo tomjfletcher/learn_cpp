@@ -8,6 +8,14 @@
 			"args": [
 				"-std=c++17",
 				"-stdlib=libc++",
+				
+                // Include .cpp files here (These are for .h file code)
+				"${workspaceRoot}/src/shaders/shader.cpp",
+				
+				// Include shaders
+				"${workspaceRoot}/src/setup/SimpleVertexShader.vertexshader",
+				"${workspaceRoot}/src/setup/SimpleFragmentShader.fragmentshader",
+                    
 				"-I./include",
 				"-L./lib",
 				"-lglfw3",
