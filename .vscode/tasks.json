@@ -12,6 +12,7 @@
                 // Include .cpp files here (These are for .h file code)
 				"${workspaceRoot}/src/shaders/shader.cpp",
 				"${workspaceRoot}/src/textures/texture.cpp",
+				"${workspaceRoot}/src/controls/controls.cpp",
 				
 				// Include shaders
 				"${workspaceRoot}/src/setup/TransformVertexShader.vertexshader",
