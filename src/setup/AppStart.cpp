@@ -107,6 +107,9 @@ int main( void )
 	while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
 		   glfwWindowShouldClose(window) == 0 );
 
+	glDeleteProgram(programID);
+	glDeleteVertexArrays(1, &vertexArrayID);
+
 	// Close OpenGL window and terminate GLFW
 	glfwTerminate();
 
