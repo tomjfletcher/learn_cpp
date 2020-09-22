@@ -21,7 +21,7 @@
 				"-g",
 				"${file}",
 				"-o",
-				"Build/Sandbox",
+				"build/Sandbox",
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"
