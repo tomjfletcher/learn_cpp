@@ -84,7 +84,7 @@ int drawGL(){
 		MainWindow::draw();
 		
 		// Swap buffers
-		glfwSwapBuffers(MainWindow::getWindow());
+		glfwSwapBuffers(MainWindow::window);
 		glfwPollEvents();
 
 	} // Check if the ESC key was pressed or the window was closed
