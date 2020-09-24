@@ -7,6 +7,7 @@
 
 //include glm
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 //include core
 #include <vector>
@@ -19,9 +20,20 @@
 
 using namespace glm;
 
-Scene::Scene() : clearColour{0.0f,0.0f,0.0f,0.0f}, nodes {}{
+Scene::Scene() : clearColour{0.0f,0.0f,1.0f,0.0f}, nodes {}{
 
-    modelViewProjMatrix = mat4();
+    // Projection matrix : 45∞ Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
+	mat4 Projection = perspective(radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
+	// Camera matrix
+	mat4 View       = lookAt(
+								vec3(4,3,3), // Camera is at (4,3,3), in World Space
+								vec3(0,0,0), // and looks at the origin
+								vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
+						   );
+	// Model matrix : an identity matrix (model will be at the origin)
+	mat4 Model      = mat4(1.0f);
+	// Our ModelViewProjection : multiplication of our 3 matrices
+	modelViewProjMatrix = Projection * View * Model; // Remember, matrix multiplication is the other way around
 
 	Node * test = new TexCubeTest();
 
