@@ -15,11 +15,11 @@ using namespace glm;
 
 GLuint Node::vertexArrayIDCounter(0);
 
-Node::Node(GLchar name){
+Node::Node(const GLchar * name){
     Node(name, GL_TRIANGLES, "/Users/tom/projects/sandbox/src/shaders/standard.fs", "/Users/tom/projects/sandbox/src/shaders/standard.vs");
 }
 
-Node::Node(GLchar name, GLenum drawType, const char * fs, const char * vs) : name(name), drawType(drawType), programID(LoadShaders( vs, fs )), MatrixID(glGetUniformLocation(programID, &name)), vertexArrayID(vertexArrayIDCounter) {
+Node::Node(const GLchar * name, GLenum drawType, const char * fs, const char * vs) : name(*name), drawType(drawType), programID(LoadShaders( vs, fs )), matrixID(glGetUniformLocation(programID, name)), vertexArrayID(vertexArrayIDCounter) {
     this->vertexArrayIDCounter++;
 	glGenVertexArrays(1, &vertexArrayID);
 	glBindVertexArray(vertexArrayID);
@@ -30,7 +30,7 @@ Node::~Node(){
     glDeleteBuffers(1, &vertexBuffer);
     glDeleteProgram(programID);
     glDeleteVertexArrays(1, &vertexArrayID);
-    //deleteNode();
+    deleteNode();
 }
 
 void Node::draw(){
@@ -42,7 +42,7 @@ void Node::draw(){
 
     // Assign matrix to shader
     auto matrix = MainWindow::getMVPMatrix();
-    glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &matrix[0][0]);
+    glUniformMatrix4fv(matrixID, 1, GL_FALSE, &matrix[0][0]);
 
     drawNode();
     
@@ -55,10 +55,10 @@ void Node::draw(){
 
 }
 
-void Node::drawBuffer(GLuint &buffer){
-	glEnableVertexAttribArray(0);
+void Node::drawBuffer(GLuint &buffer, int noPtsPrVtx, int buffrNo){
+	glEnableVertexAttribArray(buffrNo);
 	glBindBuffer(GL_ARRAY_BUFFER, buffer);
-	glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,(void*)0);
+	glVertexAttribPointer(0,noPtsPrVtx,GL_FLOAT,GL_FALSE,0,(void*)0);
 }
 
 void Node::createBuffer(GLfloat data[], GLuint &buffer){
@@ -73,4 +73,8 @@ void Node::disableBuffers(int noBuffers){
         glDisableVertexAttribArray(i);
     }
 
+}
+
+GLuint Node::getProgramID() const{
+    return this->programID;
 }

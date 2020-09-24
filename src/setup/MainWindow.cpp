@@ -82,7 +82,7 @@ int drawGL(){
     do{
 		// Draw
 		MainWindow::draw();
-		
+
 		// Swap buffers
 		glfwSwapBuffers(MainWindow::window);
 		glfwPollEvents();

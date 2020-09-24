@@ -4,13 +4,15 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
+#include "../src/scene/Drawable.hpp"
+
 using namespace glm;
 
-class Node
+class Node : public Drawable
 {
 private:
     GLuint programID;
-    GLuint MatrixID;
+    GLuint matrixID;
     GLenum drawType;
     GLchar name;
     GLsizei vertexCount;
@@ -19,9 +21,9 @@ protected:
     static GLuint vertexArrayIDCounter;
     GLuint vertexBuffer;
     GLuint normalBuffer;
-    Node(GLchar name);
-    Node(GLchar name, GLenum drawType, const char * fs, const char * vs);
-    void drawBuffer(GLuint &buffer);
+    Node(const GLchar * name);
+    Node(const GLchar * name, GLenum drawType, const char * fs, const char * vs);
+    void drawBuffer(GLuint &buffer, int noPtsPrVtx, int buffrNo);
     void createBuffer(GLfloat data[], GLuint &buffer);
     void disableBuffers(int noBuffers);
     virtual void deleteNode(){};
@@ -31,6 +33,7 @@ protected:
 public: 
     ~Node();
     void draw();
+    GLuint getProgramID() const;
 };
 
 

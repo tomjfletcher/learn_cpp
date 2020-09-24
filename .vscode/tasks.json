@@ -15,13 +15,18 @@
 				"${workspaceRoot}/src/setup/MainWindow.cpp",
 				"${workspaceRoot}/src/shaders/shader.cpp",
 				"${workspaceRoot}/src/shapes/Node.cpp",
+				"${workspaceRoot}/src/shapes/TexturedNode.cpp",
 				"${workspaceRoot}/src/shapes/test/CubeTest.cpp",
+				"${workspaceRoot}/src/textures/texture.cpp",
 
 				//include shaders
 				"${workspaceRoot}/src/shaders/standard.fs",
 				"${workspaceRoot}/src/shaders/standard.vs",
 				"${workspaceRoot}/src/shaders/simple.fs",
 				"${workspaceRoot}/src/shaders/simple.vs",
+				"${workspaceRoot}/src/shaders/texture.fs",
+				"${workspaceRoot}/src/shaders/transform.vs",
+				"${workspaceRoot}/src/textures/uvtemplate.DDS",
 
 				"-I./include",
 				"-L./lib",

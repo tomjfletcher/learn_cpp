@@ -10,7 +10,7 @@
 #include "CubeTest.hpp"
 #include "../src/shapes/Node.hpp"
 
-CubeTest::CubeTest() : Node(GLchar('test')), data{
+CubeTest::CubeTest() : Node("test"), data{
 		-1.0f,-1.0f,-1.0f,
 		-1.0f,-1.0f, 1.0f,
 		-1.0f, 1.0f, 1.0f,
@@ -58,7 +58,7 @@ void CubeTest::deleteNode(){
 }
 
 void CubeTest::drawNode(){
-    drawBuffer(vertexBuffer);
+    drawBuffer(vertexBuffer, 3, 0);
 }
 
 void CubeTest::createBuffers(){

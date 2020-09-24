@@ -6,9 +6,10 @@
 
 #include <vector>
 
+#include "../src/scene/Drawable.hpp"
 #include "../src/shapes/Node.hpp"
 
-class Scene{
+class Scene : public Drawable {
 private:
     float clearColour [4];
     std::vector<Node*> nodes;
