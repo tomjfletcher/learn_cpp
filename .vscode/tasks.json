@@ -8,6 +8,19 @@
 			"args": [
 				"-std=c++17",
 				"-stdlib=libc++",
+
+				//include src files
+				"${workspaceRoot}/src/camera/controls.cpp",
+				"${workspaceRoot}/src/scene/Scene.cpp",
+				"${workspaceRoot}/src/setup/MainWindow.cpp",
+				"${workspaceRoot}/src/shaders/shader.cpp",
+				"${workspaceRoot}/src/shapes/Node.cpp",
+				"${workspaceRoot}/src/shapes/test/CubeTest.cpp",
+
+				//include shaders
+				"${workspaceRoot}/src/shaders/standard.fs",
+				"${workspaceRoot}/src/shaders/standard.vs",
+
 				"-I./include",
 				"-L./lib",
 				"-lglfw3",
@@ -19,7 +32,7 @@
 				"-framework", 
 				"Cocoa",
 				"-g",
-				"${file}",
+				"${workspaceRoot}/src/setup/AppStart.cpp",
 				"-o",
 				"build/Sandbox",
 			],
