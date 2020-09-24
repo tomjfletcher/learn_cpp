@@ -20,6 +20,8 @@
 				//include shaders
 				"${workspaceRoot}/src/shaders/standard.fs",
 				"${workspaceRoot}/src/shaders/standard.vs",
+				"${workspaceRoot}/src/shaders/simple.fs",
+				"${workspaceRoot}/src/shaders/simple.vs",
 
 				"-I./include",
 				"-L./lib",
