@@ -68,7 +68,7 @@ void Node::createBuffer(GLfloat data[], GLuint &buffer){
 	glBufferData(GL_ARRAY_BUFFER, sizeof(*data), data, GL_STATIC_DRAW);
 }
 
-void Node::disableBuffers(int noBuffers){
+void Node::disableBuffer(int noBuffers){
     for(int i = 0; i < noBuffers; i++){
         glDisableVertexAttribArray(i);
     }

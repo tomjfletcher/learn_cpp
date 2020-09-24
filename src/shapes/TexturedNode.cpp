@@ -13,7 +13,7 @@
 using namespace glm;
 
 TexturedNode::TexturedNode(const GLchar * name, const char * texturePath) : 
-Node(name, GL_TRIANGLES, "../src/shaders/texture.fs", "../src/shaders/transform.vs"), 
+Node(name, GL_TRIANGLES, "src/shaders/texture.fs", "src/shaders/transform.vs"), 
 texture(loadDDS(texturePath)), 
 textureID(glGetUniformLocation(getProgramID(), name)) {
 

@@ -17,6 +17,7 @@
 				"${workspaceRoot}/src/shapes/Node.cpp",
 				"${workspaceRoot}/src/shapes/TexturedNode.cpp",
 				"${workspaceRoot}/src/shapes/test/CubeTest.cpp",
+				"${workspaceRoot}/src/shapes/test/TexCubeTest.cpp",
 				"${workspaceRoot}/src/textures/texture.cpp",
 
 				//include shaders

@@ -14,7 +14,8 @@
 //include header
 #include "../src/scene/Scene.hpp"
 #include "../src/camera/controls.hpp"
-#include "../src/shapes/test/CubeTest.hpp"
+#include "../src/shapes/TexturedNode.hpp"
+#include "../src/shapes/test/TexCubeTest.hpp"
 
 using namespace glm;
 
@@ -22,7 +23,7 @@ Scene::Scene() : clearColour{0.0f,0.0f,0.0f,0.0f}, nodes {}{
 
     modelViewProjMatrix = mat4();
 
-	Node * test = new CubeTest();
+	Node * test = new TexCubeTest();
 
 	addNode(test);
 }

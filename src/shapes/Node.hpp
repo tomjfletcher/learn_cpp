@@ -25,7 +25,7 @@ protected:
     Node(const GLchar * name, GLenum drawType, const char * fs, const char * vs);
     void drawBuffer(GLuint &buffer, int noPtsPrVtx, int buffrNo);
     void createBuffer(GLfloat data[], GLuint &buffer);
-    void disableBuffers(int noBuffers);
+    void disableBuffer(int noBuffers);
     virtual void deleteNode(){};
     virtual void createBuffers(){};
     virtual void drawNode(){};

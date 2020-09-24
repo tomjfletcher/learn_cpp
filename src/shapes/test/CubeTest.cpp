@@ -68,5 +68,5 @@ void CubeTest::createBuffers(){
 }
 
 void CubeTest::disableBuffers(){
-	Node::disableBuffers(1);
+	Node::disableBuffer(1);
 }
