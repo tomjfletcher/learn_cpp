@@ -69,7 +69,7 @@ int setupGLEnvironment(){
 	glDepthFunc(GL_LESS); 
 
 	// Cull triangles which normal is not towards the camera
-	glEnable(GL_CULL_FACE);
+	glDisable(GL_CULL_FACE);
 
 	MainWindow::scene = new Scene();
 

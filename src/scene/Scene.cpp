@@ -39,7 +39,7 @@ void Scene::draw(){
 	glClearColor(clearColour[0], clearColour[1], clearColour[2], clearColour[3]);
 
     // Clear the screen.
-	glClear( GL_COLOR_BUFFER_BIT );
+	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
     // Get inputs
     computeMatricesFromInputs();

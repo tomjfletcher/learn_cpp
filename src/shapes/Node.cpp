@@ -47,7 +47,7 @@ void Node::draw(){
     drawNode();
     
     // Draw the triangle !
-	glDrawArrays(drawType, 0, vertexCount); // 12*3 indices starting at 0 -> 12 triangles
+	glDrawArrays(drawType, 0, vertexCount);
 
 	disableBuffers();
 
