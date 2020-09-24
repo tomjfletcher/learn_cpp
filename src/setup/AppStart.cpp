@@ -11,66 +11,24 @@ GLFWwindow* window;
 
 // Include GLM
 #include <glm/glm.hpp>
-using namespace glm;
+
+// Include main window
+#include "MainWindow.hpp"
 
 int main( void )
 {
-	// Initialise GLFW
-	if( !glfwInit() )
-	{
-		fprintf( stderr, "Failed to initialize GLFW\n" );
-		getchar();
-		return -1;
-	}
 
-	glfwWindowHint(GLFW_SAMPLES, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	//initialise the main window
+	init();
 
-	// Open a window and create its OpenGL context
-	window = glfwCreateWindow( 1024, 768, "Sandbox", NULL, NULL);
-	if( window == NULL ){
-		fprintf( stderr, "Failed to open GLFW window.\n" );
-		getchar();
-		glfwTerminate();
-		return -1;
-	}
-	glfwMakeContextCurrent(window);
+	//setup the OpenGL environment
+	setupGLEnvironment();
 
-	// Initialize GLEW
-	if (glewInit() != GLEW_OK) {
-		fprintf(stderr, "Failed to initialize GLEW\n");
-		getchar();
-		glfwTerminate();
-		return -1;
-	}
+	//enter the drawing loop
+	drawGL();
 
-	// Ensure we can capture the escape key being pressed below
-	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-
-	// Black background
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	glDisable(GL_CULL_FACE);
-
-	do{
-		// Clear the screen.
-		glClear( GL_COLOR_BUFFER_BIT );
-
-		// Draw nothing
-		
-		
-		// Swap buffers
-		glfwSwapBuffers(window);
-		glfwPollEvents();
-
-	} // Check if the ESC key was pressed or the window was closed
-	while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
-		   glfwWindowShouldClose(window) == 0 );
-
-	// Close OpenGL window and terminate GLFW
-	glfwTerminate();
+	//end the main window
+	end();
 
 	return 0;
 }
