@@ -1,9 +1,16 @@
 #ifndef MAINWINDOW_HPP
 #define MAINWINDOW_HPP
 
+// Include GLEW
+#include <GL/glew.h>
+// Include GLFW
+#include <GLFW/glfw3.h>
+
 #include "../src/scene/Scene.hpp"
 
 namespace MainWindow{
+    static GLFWwindow* window;
+    GLFWwindow* getWindow();
     static Scene* scene;
     void addNode(Node * n);
     void draw();

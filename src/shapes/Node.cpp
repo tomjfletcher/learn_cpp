@@ -1,5 +1,10 @@
+// Include standard headers
+#include <stdio.h>
+#include <stdlib.h>
+
 #include <GL/glew.h>
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include "../src/shaders/shader.hpp"
 #include "../src/setup/MainWindow.hpp"
@@ -11,7 +16,7 @@ using namespace glm;
 GLuint Node::vertexArrayIDCounter(0);
 
 Node::Node(GLchar name){
-    Node(name, GL_TRIANGLES, "src/shaders/standard.fs", "src/shaders/standard.vs");
+    Node(name, GL_TRIANGLES, "/Users/tom/projects/sandbox/src/shaders/standard.fs", "/Users/tom/projects/sandbox/src/shaders/standard.vs");
 }
 
 Node::Node(GLchar name, GLenum drawType, const char * fs, const char * vs) : name(name), drawType(drawType), programID(LoadShaders( vs, fs )), MatrixID(glGetUniformLocation(programID, &name)), vertexArrayID(vertexArrayIDCounter) {

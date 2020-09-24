@@ -1,3 +1,7 @@
+// Include standard headers
+#include <stdio.h>
+#include <stdlib.h>
+
 // Include gl
 #include <GL/glew.h>
 #include <glm/glm.hpp>

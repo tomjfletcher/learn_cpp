@@ -7,10 +7,10 @@
 
 // Include GLFW
 #include <GLFW/glfw3.h>
-extern GLFWwindow* window;
 
 // Include GLM
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include "MainWindow.hpp"
 #include "../src/shaders/shader.hpp"
@@ -34,14 +34,14 @@ int init(){
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	// Open a window and create its OpenGL context
-	window = glfwCreateWindow( 1024, 768, "Sandbox", NULL, NULL);
-	if( window == NULL ){
+	MainWindow::window = glfwCreateWindow( 1024, 768, "Sandbox", NULL, NULL);
+	if( MainWindow::window == NULL ){
 		fprintf( stderr, "Failed to open GLFW window.\n" );
 		getchar();
 		glfwTerminate();
 		return -1;
 	}
-	glfwMakeContextCurrent(window);
+	glfwMakeContextCurrent(MainWindow::window);
 
 	// Initialize GLEW
 	if (glewInit() != GLEW_OK) {
@@ -52,11 +52,11 @@ int init(){
 	}
 
 	// Ensure we can capture the escape key being pressed below
-	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
+	glfwSetInputMode(MainWindow::window, GLFW_STICKY_KEYS, GL_TRUE);
 
 	// Set the mouse at the center of the screen
     glfwPollEvents();
-    glfwSetCursorPos(window, 1024/2, 768/2);
+    glfwSetCursorPos(MainWindow::window, 1024/2, 768/2);
 
 	return 0;
 }
@@ -84,12 +84,12 @@ int drawGL(){
 		MainWindow::draw();
 		
 		// Swap buffers
-		glfwSwapBuffers(window);
+		glfwSwapBuffers(MainWindow::getWindow());
 		glfwPollEvents();
 
 	} // Check if the ESC key was pressed or the window was closed
-	while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
-		   glfwWindowShouldClose(window) == 0 );
+	while( glfwGetKey(MainWindow::window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
+		   glfwWindowShouldClose(MainWindow::window) == 0 );
 
 	return 0;
 }
@@ -103,6 +103,10 @@ int end(){
 	glfwTerminate();
 
 	return 0;
+}
+
+GLFWwindow* MainWindow::getWindow(){
+	return window;
 }
 
 void MainWindow::addNode(Node * n){
