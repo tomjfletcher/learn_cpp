@@ -146,3 +146,75 @@ float Lense::getPivotY() const{
 float Lense::getPivotZ() const{
     return this->pivotZ;
 }
+
+void Lense::setFOV(float fov){
+    this->fov = fov;
+}
+
+void Lense::setNearClip(float nearClip){
+    this->nearClip = nearClip;
+}
+
+void Lense::setFarClip(float farClip){
+    this->farClip = farClip;
+}
+
+void Lense::setFocalX(float focalX){
+    this->focalX = focalX;
+}
+
+void Lense::setFocalY(float focalY){
+    this->focalY = focalY;
+}
+
+void Lense::setFocalZ(float focalZ){
+    this->focalZ = focalZ;
+}
+
+void Lense::setPivotX(float pivotX){
+    this->pivotX = pivotX;
+}
+
+void Lense::setPivotY(float pivotY){
+    this->pivotY = pivotY;
+}
+
+void Lense::setPivotZ(float pivotZ){
+    this->pivotZ = pivotZ;
+}
+
+void Lense::setRotateX(float rotateX){
+    this->rotateX = rotateX;
+}
+
+void Lense::setRotateY(float rotateY){
+    this->rotateY = rotateY;
+}
+
+void Lense::setRotateZ(float rotateZ){
+    this->rotateZ = rotateZ;
+}
+
+void Lense::setTranslateX(float translateX){
+    this->translateX = translateX;
+}
+
+void Lense::setTranslateY(float translateY){
+    this->translateY = translateY;
+}
+
+void Lense::setTranslateZ(float translateZ){
+    this->translateZ = translateZ;
+}
+
+void Lense::setX(float x){
+    this->x = x;
+}
+
+void Lense::setY(float y){
+    this->y = y;
+}
+
+void Lense::setZ(float z){
+    this->z = z;
+}
