@@ -10,7 +10,13 @@
 				"-stdlib=libc++",
 
 				//include src files
+				//	src.camera
 				"${workspaceFolder}/src/camera/Lense.cpp",
+				"${workspaceFolder}/src/camera/Camera.cpp",
+				"${workspaceFolder}/src/camera/RotateCameraX.cpp",
+				"${workspaceFolder}/src/camera/RotateCameraY.cpp",
+				"${workspaceFolder}/src/camera/RotateCameraZ.cpp",
+				"${workspaceFolder}/src/camera/TranslateCamera.cpp",
 
 				//include resources
 
