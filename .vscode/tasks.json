@@ -8,6 +8,12 @@
 			"args": [
 				"-std=c++17",
 				"-stdlib=libc++",
+
+				//include src files
+				"${workspaceFolder}/src/camera/Lense.cpp",
+
+				//include resources
+
 				"-I./include",
 				"-L./lib",
 				"-lglfw3",
@@ -19,7 +25,7 @@
 				"-framework", 
 				"Cocoa",
 				"-g",
-				"${file}",
+				"${workspaceFolder}/src/AppStart.cpp",
 				"-o",
 				"build/Sandbox",
 			],
