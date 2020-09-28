@@ -10,7 +10,21 @@
 				"-stdlib=libc++",
 
 				//include src files
+				//	src.camera
 				"${workspaceFolder}/src/camera/Lense.cpp",
+				"${workspaceFolder}/src/camera/Camera.cpp",
+				"${workspaceFolder}/src/camera/RotateCameraX.cpp",
+				"${workspaceFolder}/src/camera/RotateCameraY.cpp",
+				"${workspaceFolder}/src/camera/RotateCameraZ.cpp",
+				"${workspaceFolder}/src/camera/TranslateCamera.cpp",
+				//	src.light
+				"${workspaceFolder}/src/light/Light.cpp",
+				"${workspaceFolder}/src/light/Material.cpp",
+				//	src.scene
+				"${workspaceFolder}/src/scene/Scene.cpp",
+				//	src.shapes
+				//		src.shapes.test
+				"${workspaceFolder}/src/shapes/test/Test.cpp",
 
 				//include resources
 

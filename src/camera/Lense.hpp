@@ -2,7 +2,7 @@
 #define LENSE_HPP
 
 // Implement interface 
-#include "../src/scene/Drawable.hpp"
+#include "../src/interface/Drawable.hpp"
 
 class Lense : public Drawable
 {
