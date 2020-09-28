@@ -9,7 +9,7 @@
 
 using namespace glm;
 
-Scene::Scene(GLFWwindow* window):items{new Camera(window, 20, scroll_callback, cursor_position_callback), new Light()} {
+Scene::Scene(GLFWwindow* window):items{new Camera(window, -50, scroll_callback, cursor_position_callback), new Light()} {
 
 }
 

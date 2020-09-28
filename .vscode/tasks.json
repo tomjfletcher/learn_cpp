@@ -22,11 +22,15 @@
 				"${workspaceFolder}/src/light/Material.cpp",
 				//	src.scene
 				"${workspaceFolder}/src/scene/Scene.cpp",
+				//	src.shaders
+				"${workspaceFolder}/src/shaders/Shader.cpp",
 				//	src.shapes
 				//		src.shapes.test
 				"${workspaceFolder}/src/shapes/test/Test.cpp",
 
 				//include resources
+				"${workspaceFolder}/src/shaders/simple.fs",
+				"${workspaceFolder}/src/shaders/simple.vs",
 
 				"-I./include",
 				"-L./lib",

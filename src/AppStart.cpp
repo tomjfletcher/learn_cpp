@@ -15,6 +15,7 @@
 #include <glm/glm.hpp>
 
 #include "../src/scene/Scene.hpp"
+#include "../src/shapes/test/Test.hpp"
 
 using namespace glm;
 
@@ -53,16 +54,17 @@ int main( void )
 	}
 
 	Scene scene(window);
+	scene.addItem(new Test());
 
 	// Ensure we can capture the escape key being pressed below
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
 	// Black background
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	glDisable(GL_CULL_FACE);
 
 	do{
 		
+		// Draw items
 		scene.draw();
 		
 		// Swap buffers
