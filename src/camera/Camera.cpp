@@ -10,7 +10,7 @@ void Camera::init(){
 	t.setXYZ(0, 0, 0);
 }
 
-Camera::Camera(GLFWwindow* window, float distance, GLFWscrollfun scroll_callback):
+Camera::Camera(GLFWwindow* window, float distance, GLFWscrollfun scroll_callback, GLFWcursorposfun callback):
 window(window),
 cam(*(new Lense(0, distance, 0, 0, 0, 0, 45, 1, 2000))),
 t(*(new TranslateCamera(this->cam))),
@@ -24,6 +24,7 @@ shiftModifier(5), ctrlModifier(0.1), zoomModifier(1), panModifier(1), modifier(0
     scrollCallCam = this;
     glfwSetCursorPos(window, mousePosX, mousePosY);
     glfwSetScrollCallback(window, scroll_callback);
+    glfwSetCursorPosCallback(window, callback);
 }
 
 Camera::~Camera(){
@@ -142,4 +143,12 @@ void Camera::setZoomModifier(float mod){
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset){
     (*scrollCallCam).handleZoom(xoffset, yoffset);
+}
+
+static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos){
+    if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1)==GLFW_PRESS) {
+        (*scrollCallCam).handleRotate();
+    } else if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_2)==GLFW_PRESS) {
+        (*scrollCallCam).handleTranslate();
+    }
 }
