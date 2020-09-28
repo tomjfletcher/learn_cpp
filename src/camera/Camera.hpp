@@ -33,7 +33,7 @@ public:
     RotateCameraY ry;
     RotateCameraZ rz;
     TranslateCamera t;
-    Camera(GLFWwindow* window, float distance, GLFWscrollfun scroll_callback);
+    Camera(GLFWwindow* window, float distance, GLFWscrollfun scroll_callback, GLFWcursorposfun callback);
     ~Camera();
     void draw();
     void setPerspective();
@@ -53,5 +53,6 @@ public:
 };
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
 
 #endif
