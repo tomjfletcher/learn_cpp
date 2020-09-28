@@ -15,6 +15,9 @@ public:
     virtual void translateZ(float z){};
     virtual void translateXY(float x, float y){};
     virtual void translateXYZ(float x, float y, float z){};
+    void setZoom(float zoom){};
+    float getZoom()const;
+    void zoomBy(float d){};
 };
 
 #endif

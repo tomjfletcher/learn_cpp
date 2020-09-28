@@ -1,48 +1,34 @@
 // Include header
-#include "Camera.hpp"
+#include "ModelViewInputHandler.hpp"
 
-Camera* scrollCallCam;
+#include "../src/AppStart.hpp"
 
-void Camera::init(){
-    rx.setAngle(-45);
-	ry.setAngle(0);
-	rz.setAngle(135);
-	t.setXYZ(0, 0, 0);
-}
-
-Camera::Camera(GLFWwindow* window, float distance, GLFWscrollfun scroll_callback):
-window(window),
-cam(*(new Lense(0, distance, 0, 0, 0, 0, 45, 1, 2000))),
-t(*(new TranslateCamera(this->cam))),
-rx(*(new RotateCameraX(this->cam))),
-ry(*(new RotateCameraY(this->cam))),
-rz(*(new RotateCameraZ(this->cam))),
+ModelViewInputHandler::ModelViewInputHandler() :
 mousePosX(1024/2), mousePosY(768/2),
 mouseOldX(0), mouseOldY(0),
 mouseDeltaX(0), mouseDeltaY(0),
 shiftModifier(5), ctrlModifier(0.1), zoomModifier(1), panModifier(1), modifier(0){
-    scrollCallCam = this;
     glfwSetCursorPos(window, mousePosX, mousePosY);
     glfwSetScrollCallback(window, scroll_callback);
 }
 
-Camera::~Camera(){
+ModelViewInputHandler::~ModelViewInputHandler(){
 
 }
 
-void Camera::draw(){
-    cam.draw();
+void ModelViewInputHandler::handleKeyDown(){
+
 }
 
-void Camera::setPerspective(){
-    cam.setPerspective();
+void ModelViewInputHandler::handleKeyPressed(){
+
 }
 
-void Camera::setTransforms(){
-    cam.setTransformations();
+void ModelViewInputHandler::handleKeyReleased(){
+
 }
 
-void Camera::handleRotate(){
+void ModelViewInputHandler::handleRotate(Rotatable* rx, Rotatable* ry, Rotatable* rz){
 			getMouse();
 			getModifier();
 			float prev = rx.getAngle();
@@ -55,7 +41,7 @@ void Camera::handleRotate(){
             //return false;
 }
 
-void Camera::getMouse(){
+void ModelViewInputHandler::getMouse(){
     // remembers old
 	mouseOldX = mousePosX;
 	mouseOldY = mousePosY;
@@ -68,7 +54,7 @@ void Camera::getMouse(){
 	mouseDeltaY = -(mousePosY - mouseOldY);
 }
 
-void Camera::getModifier(){
+void ModelViewInputHandler::getModifier(){
     float ret = defaultModifier;
 	if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL)==GLFW_PRESS) {
 		ret = getCtrlModifier();
@@ -78,7 +64,7 @@ void Camera::getModifier(){
 	modifier = ret;
 }
 
-void Camera::getModifierForZoom(){
+void ModelViewInputHandler::getModifierForZoom(){
     modifier *= zoomModifier;// modifies the modifier to zoom
 	if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL)==GLFW_PRESS) {
 		modifier *= defaultZoomModifier * 0.5;
@@ -89,57 +75,51 @@ void Camera::getModifierForZoom(){
 	}   
 }
 
-void Camera::handleTranslate(){
+void ModelViewInputHandler::handleTranslate(Translatable* t){
     getMouse();
 	getModifier();
 	modifier = modifier * panModifier;
 	t.translateXY(mouseDeltaX * modifier, -mouseDeltaY * modifier);// translates by a relative amount
 }
 
-void Camera::handleZoom(double xoffset, double yoffset){
+void ModelViewInputHandler::handleZoom(Translatable* t, double xoffset, double yoffset){
     getModifier();
 	getZoomModifier();
 	t.zoomBy((float) (yoffset * modifier * -1));
 }
 
-void Camera::mouseMove(){
+void ModelViewInputHandler::mouseMove(){
 	getMouse();
 }
 
-
-float Camera::getCtrlModifier()const{
+float ModelViewInputHandler::getCtrlModifier()const{
     return this->ctrlModifier;
 }
 
-void Camera::setCtrlModifier(float mod){
+void ModelViewInputHandler::setCtrlModifier(float mod){
     this->ctrlModifier = mod;
 }
 
-float Camera::getPanModifier()const{
+float ModelViewInputHandler::getPanModifier()const{
     return this->panModifier;
 }
 
-void Camera::setPanModifier(float mod){
+void ModelViewInputHandler::setPanModifier(float mod){
     this->panModifier = mod;
 }
 
-float Camera::getShiftModifier()const{
+float ModelViewInputHandler::getShiftModifier()const{
     return this->shiftModifier;
 }
 
-void Camera::setShiftModifier(float mod){
+void ModelViewInputHandler::setShiftModifier(float mod){
     this->shiftModifier = mod;
 }
 
-float Camera::getZoomModifier()const{
+float ModelViewInputHandler::getZoomModifier()const{
     return this->zoomModifier;
 }
 
-void Camera::setZoomModifier(float mod){
+void ModelViewInputHandler::setZoomModifier(float mod){
     this->zoomModifier = mod;
-}
-
-
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset){
-    (*scrollCallCam).handleZoom(xoffset, yoffset);
 }

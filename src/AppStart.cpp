@@ -2,15 +2,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Include header
+#include "AppStart.hpp"
+
 // Include GLEW
 #include <GL/glew.h>
 
 // Include GLFW
 #include <GLFW/glfw3.h>
-GLFWwindow* window;
 
 // Include GLM
 #include <glm/glm.hpp>
+
+#include "camera/Camera.hpp"
 using namespace glm;
 
 int main( void )
@@ -74,4 +78,3 @@ int main( void )
 
 	return 0;
 }
-
