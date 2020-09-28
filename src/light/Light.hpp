@@ -6,11 +6,13 @@
 class Light : public Drawable
 {
 private:
-    float aPower[] {0.2f, 0.2f, 0.2f, 1};
-	float dPower[] {0.4f, 0.4f, 0.4f, 1};
-	float sPower[] {0.8f, 0.8f, 0.8f, 1};
-    float pos[] {100, 100, -100};
+    float aPower[4];
+	float dPower[4] ;
+	float sPower[4] ;
+    float pos[3] ;
 public:
+    Light();
+    ~Light();
     void draw();
 };
 
