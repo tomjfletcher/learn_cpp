@@ -17,6 +17,9 @@
 				"${workspaceFolder}/src/camera/RotateCameraY.cpp",
 				"${workspaceFolder}/src/camera/RotateCameraZ.cpp",
 				"${workspaceFolder}/src/camera/TranslateCamera.cpp",
+				//	src.light
+				"${workspaceFolder}/src/light/Light.cpp",
+				"${workspaceFolder}/src/light/Material.cpp",
 
 				//include resources
 
