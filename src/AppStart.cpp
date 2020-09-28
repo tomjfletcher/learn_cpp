@@ -14,7 +14,8 @@
 // Include GLM
 #include <glm/glm.hpp>
 
-#include "camera/Camera.hpp"
+#include "../src/scene/Scene.hpp"
+
 using namespace glm;
 
 int main( void )
@@ -51,6 +52,8 @@ int main( void )
 		return -1;
 	}
 
+	Scene scene(window);
+
 	// Ensure we can capture the escape key being pressed below
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
@@ -59,11 +62,8 @@ int main( void )
 	glDisable(GL_CULL_FACE);
 
 	do{
-		// Clear the screen.
-		glClear( GL_COLOR_BUFFER_BIT );
-
-		// Draw nothing
 		
+		scene.draw();
 		
 		// Swap buffers
 		glfwSwapBuffers(window);

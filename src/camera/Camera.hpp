@@ -53,6 +53,6 @@ public:
 };
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
-static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
+void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
 
 #endif

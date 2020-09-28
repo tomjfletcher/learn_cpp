@@ -145,7 +145,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset){
     (*scrollCallCam).handleZoom(xoffset, yoffset);
 }
 
-static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos){
+void cursor_position_callback(GLFWwindow* window, double xpos, double ypos){
     if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1)==GLFW_PRESS) {
         (*scrollCallCam).handleRotate();
     } else if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_2)==GLFW_PRESS) {
