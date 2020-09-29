@@ -10,10 +10,10 @@
 class TranslateCamera
 {
 private:
-    Lense cam;
+    Lense* cam;
     float zoom;
 public:
-    TranslateCamera(Lense cam);
+    TranslateCamera(Lense* cam);
     ~TranslateCamera();
     void setZoom(float zoom);
     float getZoom()const;

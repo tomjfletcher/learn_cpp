@@ -11,10 +11,10 @@
 class RotateCameraX : public Rotatable
 {
 private:
-    Lense cam;
+    Lense* cam;
     float currentAngle;
 public:
-    RotateCameraX(Lense cam);
+    RotateCameraX(Lense* cam);
     ~RotateCameraX();
     float getAngle() const;
     void setAngle(float a);

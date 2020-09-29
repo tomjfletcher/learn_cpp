@@ -1,7 +1,7 @@
 // Include header
 #include "RotateCameraX.hpp"
 
-RotateCameraX::RotateCameraX(Lense cam) : cam(cam){
+RotateCameraX::RotateCameraX(Lense* cam) : cam(cam){
     this->currentAngle = 0;
 }
 
@@ -16,7 +16,7 @@ void RotateCameraX::setAngle(float a){
 		a = -90;
 	}
     this->currentAngle = a;
-    cam.setRotateX(currentAngle);
+    (*cam).setRotateX(currentAngle);
 }
 
 void RotateCameraX::rotate(float a){

@@ -18,7 +18,7 @@ class Camera : public Drawable
 {
 private:
     GLFWwindow* window;
-    Lense cam;
+    Lense* cam;
     double mousePosX, mousePosY;
     double mouseOldX, mouseOldY;
     double mouseDeltaX, mouseDeltaY;

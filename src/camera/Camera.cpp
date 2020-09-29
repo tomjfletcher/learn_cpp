@@ -12,7 +12,7 @@ void Camera::init(){
 
 Camera::Camera(GLFWwindow* window, float distance, GLFWscrollfun scroll_callback, GLFWcursorposfun callback):
 window(window),
-cam(*(new Lense(0, distance, 0, 0, 0, 0, 45, 1, 2000))),
+cam(new Lense(0, distance, 0, 0, 0, 0, 45, 1, 2000)),
 t(*(new TranslateCamera(this->cam))),
 rx(*(new RotateCameraX(this->cam))),
 ry(*(new RotateCameraY(this->cam))),
@@ -32,15 +32,15 @@ Camera::~Camera(){
 }
 
 void Camera::draw(){
-    cam.draw();
+    (*cam).draw();
 }
 
 void Camera::setPerspective(){
-    cam.setPerspective();
+    (*cam).setPerspective();
 }
 
 void Camera::setTransforms(){
-    cam.setTransformations();
+    (*cam).setTransformations();
 }
 
 void Camera::handleRotate(){
@@ -63,10 +63,13 @@ void Camera::getMouse(){
 
 	// gets new
 	glfwGetCursorPos(window, &mousePosX, &mousePosY);
+	glfwSetCursorPos(window, 1024/2, 768/2);
 
 	// works out difference
 	mouseDeltaX = -(mousePosX - mouseOldX);
 	mouseDeltaY = -(mousePosY - mouseOldY);
+
+
 }
 
 void Camera::getModifier(){
@@ -146,9 +149,9 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset){
 }
 
 void cursor_position_callback(GLFWwindow* window, double xpos, double ypos){
-    if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1)==GLFW_PRESS) {
+    //if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1)==GLFW_PRESS) {
         (*scrollCallCam).handleRotate();
-    } else if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_2)==GLFW_PRESS) {
-        (*scrollCallCam).handleTranslate();
-    }
+    //} else if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_2)==GLFW_PRESS) {
+        //(*scrollCallCam).handleTranslate();
+    //}
 }
