@@ -10,23 +10,18 @@
 				"-stdlib=libc++",
 
 				//include src files
-				//	src.camera
-				"${workspaceFolder}/src/camera/Lense.cpp",
-				"${workspaceFolder}/src/camera/Camera.cpp",
-				"${workspaceFolder}/src/camera/RotateCameraX.cpp",
-				"${workspaceFolder}/src/camera/RotateCameraY.cpp",
-				"${workspaceFolder}/src/camera/RotateCameraZ.cpp",
-				"${workspaceFolder}/src/camera/TranslateCamera.cpp",
-				//	src.light
-				"${workspaceFolder}/src/light/Light.cpp",
-				"${workspaceFolder}/src/light/Material.cpp",
-				//	src.scene
-				"${workspaceFolder}/src/scene/Scene.cpp",
-				//	src.shapes
-				//		src.shapes.test
-				"${workspaceFolder}/src/shapes/test/Test.cpp",
+				"${workspaceFolder}/src/common/shader.cpp",
+				"${workspaceFolder}/src/common/texture.cpp",
+				"${workspaceFolder}/src/common/controls.cpp",
+				"${workspaceFolder}/src/common/objloader.cpp",
 
 				//include resources
+				"${workspaceFolder}/src/tutorial02_red_triangle/SimpleFragmentShader.fragmentshader",
+				"${workspaceFolder}/src/tutorial02_red_triangle/SimpleVertexShader.vertexshader",
+				"${workspaceFolder}/src/tutorial07_model_loading/cube.obj",
+				"${workspaceFolder}/src/tutorial07_model_loading/TextureFragmentShader.fragmentshader",
+				"${workspaceFolder}/src/tutorial07_model_loading/TransformVertexShader.vertexshader",
+				"${workspaceFolder}/src/tutorial07_model_loading/uvmap.DDS",
 
 				"-I./include",
 				"-L./lib",
@@ -39,7 +34,7 @@
 				"-framework", 
 				"Cocoa",
 				"-g",
-				"${workspaceFolder}/src/AppStart.cpp",
+				"${file}",
 				"-o",
 				"build/Sandbox",
 			],
